@@ -1,0 +1,8 @@
+applications:
+- name: event-booking-service
+  memory: 900M
+  instances: 1
+  path: target/springBootBookingService.jar
+  buildpack: java_buildpack
+  services:
+  - service-registry

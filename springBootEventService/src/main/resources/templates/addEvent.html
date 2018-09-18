@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Add Event</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+      
+   </head>
+   <body>
+   <div th:replace="fragments/header :: header">...</div>
+  <div class="container" > 
+      <h1>Your New Action Item:</h1>
+     <!--  <form th:action="@{/api/events/addEvent}"
+         th:object="${eventForm}" method="POST" >
+         Event Name:
+         <input type="text" th:field="*{eventName}" />    
+         <br/>
+         Event Category:
+         <input type="text" th:field="*{eventCategory}" />     
+         <br/>
+         <input type="submit" value="Create" />
+      </form>
+       -->
+      <form th:action="@{/api/events/addEvent}"
+         th:object="${eventForm}" method="POST">
+		<fieldset class="form-group">
+			<!-- <label>Description</label> <input type="text" th:field="*{eventName}
+				class="form-control"  /> <BR /> -->
+			<label>Description</label> <input type="text" th:field="*{eventName}"
+				class="form-control" /> <BR />
+		</fieldset>
+		<fieldset class="form-group">
+			<label>Category</label> <input type="text" th:field="*{eventCategory}"
+				class="form-control" /> <BR />
+		</fieldset>
+		
+		<fieldset class="form-group">
+			<label>Event Date</label> <input type="date" th:field="*{eventTime}" 
+				class="form-control" /> <BR />
+		</fieldset>
+		<input name="Create" type="submit" class="btn btn-success" />
+	</form>
+      
+      
+    </div>   
+      <br/>
+       
+      <!-- Check if errorMessage is not null and not empty -->
+       
+      <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+         ...
+      </div>
+       
+   </body>
+</html>

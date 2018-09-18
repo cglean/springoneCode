@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Event List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+   </head>
+   <body>
+   <div th:replace="fragments/header :: header">...</div>
+      <H1>Welcome to SpringOne 2018</H1>
+      <br/><br/>
+      <div class="container" >
+         <table class="table table-striped" >
+         <caption>All Scheduled Events here</caption>
+            <tr>
+               <th>Event Name</th>
+               <th>Event Category</th>
+               <th>Event Date</th>
+               <th>Actions</th>
+               <th>Register For Event</th>
+            </tr>
+            <tr th:each ="event : ${events}">
+               <td th:utext="${event.name}">...</td>
+               <td th:utext="${event.category}">...</td>
+               <td th:utext="${event.eventTime}">...</td>
+                <td > <a class="btn btn-danger" th:href="@{'/api/events/deleteEvent?id='+${event.id}}">DELETE</a></td>
+               <!-- <td> <a href="{'/api/events/bookEvent?id='+${event.id}}">Booking Link</a></td> -->
+               <td > <a class="btn btn-primary" th:href="@{'/api/events/bookEvent?id='+${event.id}}">Register</a></td>
+            </tr>
+         </table>
+       <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+         ...
+      </div>
+         <a class="btn btn-success" href="addEvent">Add New Event</a>
+      </div>     
+   </body>
+</html>

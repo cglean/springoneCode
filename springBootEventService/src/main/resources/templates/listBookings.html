@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Booking List</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+      
+   </head>
+   <body>
+   <div th:replace="fragments/header :: header">...</div>
+       <H1>Welcome to SpringOne 2018</H1>
+      <br/><br/>
+      <div class="container" >
+         <table class="table table-striped" >
+         <caption>All Bookings here</caption>
+            <tr>
+               <th>Event Name</th>
+               <th>Event Date</th>
+               <th>Booking Date</th>
+            </tr>
+            <tr th:each ="booking : ${bookings}">
+               <td th:utext="${booking.eventName}">...</td>
+               <td th:utext="${booking.eventTime}">...</td>
+                <td th:utext="${booking.bookingDate}">...</td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

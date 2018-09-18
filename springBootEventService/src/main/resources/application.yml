@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: event-management-service
+server:
+  port: 8080
+welcome:
+  message : Spring One Demo
