@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class SpringBootBookingServiceApplication {
+	
+	static {
+		System.out.println("Inside static block for certificate");
+		SSLUtilities.trustAllHostnames();
+		SSLUtilities.trustAllHttpsCertificates();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootBookingServiceApplication.class, args);

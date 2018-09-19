@@ -1,8 +1,9 @@
 applications:
-- name: event-management-service
+- name: event-mgmt-service
   memory: 900M
   instances: 1
   path: target/springBootEventService.jar
-  buildpack: java_buildpack
+  buildpacks: 
+  - https://github.com/cloudfoundry/java-buildpack.git
   services:
-  - service-registry
+  - eureka-service
